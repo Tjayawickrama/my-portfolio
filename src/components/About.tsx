@@ -5,9 +5,9 @@ const About = () => {
     <div className="about-section" id="about">
       <div className="about-image-wrapper">
         <div className="about-glow-light"></div>
-        <img 
-          src="/images/25.png" 
-          alt="About Tharushi" 
+        <img
+          src="/images/3.png"
+          alt="About Tharushi"
           className="about-image"
         />
       </div>
