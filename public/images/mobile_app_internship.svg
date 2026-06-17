@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7f40ff"/>
+      <stop offset="100%" style="stop-color:#aa42ff"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a4a"/>
+      <stop offset="100%" style="stop-color:#1e1e3a"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  
+  <!-- Phone Frame -->
+  <rect x="180" y="30" width="120" height="220" rx="15" fill="#2a2a4a" stroke="#444" stroke-width="2"/>
+  <rect x="190" y="50" width="100" height="180" rx="5" fill="#1a1a2e"/>
+  <!-- Status bar -->
+  <rect x="190" y="50" width="100" height="20" rx="5" fill="url(#accent)"/>
+  <text x="240" y="63" fill="white" font-size="8" text-anchor="middle" font-family="Arial">9:41 AM</text>
+  <!-- App content lines -->
+  <rect x="200" y="80" width="80" height="8" rx="4" fill="#3a3a5a"/>
+  <rect x="200" y="95" width="60" height="6" rx="3" fill="#333355"/>
+  <rect x="200" y="110" width="80" height="30" rx="8" fill="url(#accent)" opacity="0.3"/>
+  <rect x="200" y="150" width="80" height="30" rx="8" fill="url(#accent)" opacity="0.2"/>
+  <rect x="200" y="190" width="80" height="30" rx="8" fill="url(#accent)" opacity="0.15"/>
+  <!-- Notch -->
+  <rect x="220" y="33" width="40" height="12" rx="6" fill="#1a1a2e"/>
+  
+  <!-- Second Phone -->
+  <rect x="320" y="50" width="120" height="220" rx="15" fill="#2a2a4a" stroke="#444" stroke-width="2"/>
+  <rect x="330" y="70" width="100" height="180" rx="5" fill="#1a1a2e"/>
+  <rect x="330" y="70" width="100" height="20" rx="5" fill="url(#accent)"/>
+  <text x="380" y="83" fill="white" font-size="8" text-anchor="middle" font-family="Arial">9:41 AM</text>
+  <circle cx="380" cy="130" r="25" fill="url(#accent)" opacity="0.3"/>
+  <rect x="340" y="165" width="80" height="8" rx="4" fill="#3a3a5a"/>
+  <rect x="350" y="180" width="60" height="6" rx="3" fill="#333355"/>
+  <rect x="340" y="200" width="80" height="25" rx="12" fill="url(#accent)" opacity="0.5"/>
+  <text x="380" y="216" fill="white" font-size="9" text-anchor="middle" font-family="Arial">Get Started</text>
+  <rect x="340" y="33" width="40" height="12" rx="6" fill="#1a1a2e" transform="translate(20,17)"/>
+
+  <!-- Title -->
+  <text x="300" y="310" fill="white" font-size="20" text-anchor="middle" font-family="Arial" font-weight="bold">Mobile App UI/UX</text>
+  <text x="300" y="335" fill="#aa42ff" font-size="14" text-anchor="middle" font-family="Arial">Internship Project</text>
+  <text x="300" y="360" fill="#888" font-size="11" text-anchor="middle" font-family="Arial">Figma · HCI Principles · Prototyping</text>
+</svg>
