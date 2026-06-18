@@ -2,12 +2,21 @@ import { PropsWithChildren, useEffect, useState } from "react";
 import "./styles/Landing.css";
 
 const Landing = ({ children }: PropsWithChildren) => {
+  const isDesktop = typeof window !== "undefined" && window.innerWidth > 1024;
+
   const [showImage, setShowImage] = useState<boolean>(() => {
+    // On mobile the image is position:absolute — always show it
+    if (!isDesktop) return true;
     if (typeof window !== "undefined") return window.scrollY === 0;
     return true;
   });
 
   useEffect(() => {
+    // Only hide the image on scroll for desktop (where it's position:fixed)
+    if (window.innerWidth <= 1024) {
+      setShowImage(true);
+      return;
+    }
     const onScroll = () => {
       setShowImage(window.scrollY === 0);
     };
