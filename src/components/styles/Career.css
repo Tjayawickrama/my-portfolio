@@ -1,4 +1,4 @@
-﻿.career-section {
+.career-section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -192,7 +192,8 @@
     left: 0%;
   }
   .career-container {
-    width: calc(100% - 25px);
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 @media only screen and (max-width: 600px) {
