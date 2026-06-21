@@ -1,10 +1,11 @@
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
 import { TbNotes } from "react-icons/tb";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import HoverLinks from "./HoverLinks";
 
 const SocialIcons = () => {
+  const iconsRef = useRef<HTMLDivElement>(null);
   const handleResumeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const link = document.createElement("a");
@@ -61,8 +62,27 @@ const SocialIcons = () => {
     });
   }, []);
 
+  // Hide icons when contact section is visible
+  useEffect(() => {
+    const contactSection = document.getElementById("contact");
+    if (!contactSection || !iconsRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (iconsRef.current) {
+          iconsRef.current.style.opacity = entry.isIntersecting ? "0" : "1";
+          iconsRef.current.style.pointerEvents = entry.isIntersecting ? "none" : "auto";
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(contactSection);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="icons-section">
+    <div className="icons-section" ref={iconsRef} style={{ transition: "opacity 0.4s ease" }}>
       <div className="social-icons" data-cursor="icons" id="social">
         <span>
           <a href="https://github.com/Tjayawickrama" target="_blank" rel="noopener noreferrer">

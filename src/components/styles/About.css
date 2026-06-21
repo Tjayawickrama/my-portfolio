@@ -1,159 +1,168 @@
+/* ═══════════════════════════════════════════════════════════════
+   ABOUT SECTION
+   Mobile: stacked (image top, text below)
+   Desktop (≥1025px): two-column grid — image left, text right
+═══════════════════════════════════════════════════════════════ */
+
 .about-section {
+  width: var(--cWidth);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 16px;
+  box-sizing: border-box;
+
+  /* Mobile default: single column, centered */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  opacity: 1;
-  height: auto;
-  width: 100%;
-  max-width: var(--cWidth);
-  margin: 0 auto;
-  padding: 60px 16px;
-  box-sizing: border-box;
-}
-.about-me {
-  padding: 20px 0;
-  width: 100%;
-  max-width: 500px;
-}
-.about-me h3 {
-  font-family: "Outfit", sans-serif;
-  font-size: 18px;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-weight: 600;
-  color: var(--accentColor);
-  margin-bottom: 20px;
+  gap: 40px;
 }
 
-.about-me p {
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.8;
-  letter-spacing: 0.3px;
-  color: var(--textColor);
-}
-
-@media only screen and (min-width: 600px) {
-  .about-section {
-    justify-content: center;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .about-me {
-    width: 500px;
-    max-width: calc(100% - 70px);
-    transform: translateY(0%);
-  }
-  .about-section {
-    opacity: 1;
-  }
-}
-@media only screen and (min-width: 1025px) {
-  .about-section {
-    width: var(--cWidth);
-    justify-content: right;
-    max-width: 1920px;
-    height: var(--vh);
-    padding: 0px;
-    opacity: 1;
-  }
-  .about-me {
-    padding: 0px;
-    width: 50%;
-  }
-  .about-me p {
-    font-size: clamp(1.15rem, 1.4vw, 1.5rem);
-    line-height: 1.8;
-  }
-}
-@media only screen and (min-width: 1950px) {
-  .about-me p {
-    font-size: 1.65rem;
-    line-height: 2rem;
-  }
-}
-
-/* About Image with Purple Glow */
+/* ── Image column ───────────────────────────────────────────── */
 .about-image-wrapper {
-  position: absolute;
-  left: 10%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 400px;
-  height: 600px;
+  position: relative;
+  /* Fixed size on mobile so it's large but not full-width */
+  width: min(280px, 72vw);
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 5;
 }
 
+/* Subtle purple glow behind the photo */
 .about-glow-light {
   position: absolute;
-  width: 550px;
-  height: 750px;
+  inset: -30px;
   background: radial-gradient(
-    circle,
-    rgba(200, 100, 255, 0.9) 0%,
-    rgba(147, 51, 234, 0.5) 30%,
-    rgba(100, 50, 200, 0.25) 55%,
-    transparent 80%
+    ellipse at center,
+    rgba(180, 80, 255, 0.22) 0%,
+    rgba(130, 40, 220, 0.12) 45%,
+    transparent 72%
   );
   border-radius: 50%;
-  filter: blur(60px);
-  animation: aboutGlowPulse 3.5s ease-in-out infinite;
+  filter: blur(40px);
   z-index: 0;
-}
-
-.about-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  position: relative;
-  z-index: 10;
-  filter: drop-shadow(0 0 50px rgba(200, 100, 255, 0.7));
+  animation: aboutGlowPulse 4s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes aboutGlowPulse {
   0%, 100% {
+    opacity: 0.8;
     transform: scale(1);
-    opacity: 0.85;
-    filter: blur(60px);
   }
   50% {
-    transform: scale(1.1);
     opacity: 1;
-    filter: blur(70px);
+    transform: scale(1.05);
   }
 }
 
-@media only screen and (max-width: 1024px) {
+.about-image {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  /* Very soft drop shadow for depth */
+  filter: drop-shadow(0 8px 32px rgba(160, 60, 255, 0.25));
+}
+
+/* ── Text column ────────────────────────────────────────────── */
+.about-me {
+  width: 100%;
+  max-width: 560px;
+  text-align: center;         /* centered on mobile */
+}
+
+.about-me .title {
+  font-family: "Outfit", sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 600;
+  color: var(--accentColor);
+  margin: 0 0 16px 0;
+}
+
+.about-me .para {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.2px;
+  color: var(--secondaryTextColor);
+  margin: 0;
+}
+
+/* ── Tablet (≥600px): bump image size slightly ──────────────── */
+@media only screen and (min-width: 600px) {
   .about-image-wrapper {
-    position: relative;
-    left: auto;
-    top: auto;
-    transform: none;
-    width: 300px;
-    height: 450px;
-    margin: 20px auto;
+    width: min(320px, 60vw);
   }
-  
-  .about-glow-light {
-    width: 420px;
-    height: 580px;
+  .about-me .para {
+    font-size: 17px;
   }
 }
 
-@media only screen and (max-width: 600px) {
-  .about-image-wrapper {
-    width: 250px;
-    height: 380px;
+/* ── Desktop (≥1025px): two-column grid ────────────────────── */
+@media only screen and (min-width: 1025px) {
+  .about-section {
+    /* True two-column: left column = image, right = text */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    column-gap: 72px;
+    padding: 0 40px;
+    min-height: var(--vh);
+    max-width: 1200px;
   }
-  
+
+  .about-image-wrapper {
+    /* Left column: fixed width, image-sized */
+    width: 360px;
+    flex-shrink: 0;
+  }
+
+  .about-me {
+    /* Right column: fill remaining space */
+    flex: 1;
+    max-width: 520px;
+    text-align: left;          /* left-align text on desktop */
+  }
+
+  .about-me .title {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .about-me .para {
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    line-height: 1.9;
+  }
+
   .about-glow-light {
-    width: 350px;
-    height: 480px;
+    inset: -50px;
+    filter: blur(55px);
+  }
+}
+
+/* ── Large desktop (≥1400px) ───────────────────────────────── */
+@media only screen and (min-width: 1400px) {
+  .about-section {
+    column-gap: 96px;
+  }
+
+  .about-image-wrapper {
+    width: 400px;
+  }
+
+  .about-me {
+    max-width: 580px;
+  }
+
+  .about-me .para {
+    font-size: clamp(1.1rem, 1.35vw, 1.35rem);
   }
 }

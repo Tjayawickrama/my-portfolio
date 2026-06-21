@@ -5,14 +5,12 @@ const Landing = ({ children }: PropsWithChildren) => {
   const isDesktop = typeof window !== "undefined" && window.innerWidth > 1024;
 
   const [showImage, setShowImage] = useState<boolean>(() => {
-    // On mobile the image is position:absolute — always show it
     if (!isDesktop) return true;
     if (typeof window !== "undefined") return window.scrollY === 0;
     return true;
   });
 
   useEffect(() => {
-    // Only hide the image on scroll for desktop (where it's position:fixed)
     if (window.innerWidth <= 1024) {
       setShowImage(true);
       return;
@@ -48,10 +46,11 @@ const Landing = ({ children }: PropsWithChildren) => {
             </h2>
           </div>
           <div className={`profile-image-wrapper ${showImage ? "loaded" : ""}`}>
+            <div className="profile-glow" aria-hidden="true" />
             <div className="profile-image-inner">
-              <img 
-                src="/images/about.png" 
-                alt="Tharushi Jayawickrama" 
+              <img
+                src="/images/about.png"
+                alt="Tharushi Jayawickrama"
                 className="profile-center-image"
               />
             </div>

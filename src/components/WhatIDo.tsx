@@ -87,23 +87,22 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>DEVELOP</h3>
-              <h4>Frontend Web Development</h4>
+              <h3>DESIGN</h3>
+              <h4>UI/UX Design</h4>
               <p>
-                Building modern, responsive web applications with clean UI
-                component design, reusable structures, and performance
-                optimization for smooth user interactions.
+                Creating high-fidelity prototypes and user-centered interfaces
+                with a focus on usability, accessibility, and visual hierarchy
+                for intuitive user experiences.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">JavaScript</div>
-                <div className="what-tags">HTML5 / CSS</div>
-                <div className="what-tags">React</div>
-                <div className="what-tags">Next.js</div>
-                <div className="what-tags">Flutter</div>
-                <div className="what-tags">Java</div>
-                <div className="what-tags">Git / GitHub</div>
-                <div className="what-tags">VS Code</div>
+                <div className="what-tags">Figma</div>
+                <div className="what-tags">Canva</div>
+                <div className="what-tags">UI Design</div>
+                <div className="what-tags">Wireframing</div>
+                <div className="what-tags">Prototyping</div>
+                <div className="what-tags">HCI Principles</div>
+                <div className="what-tags">User Research</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -127,22 +126,23 @@ const WhatIDo = () => {
             </div>
             <div className="what-corner"></div>
             <div className="what-content-in">
-              <h3>DESIGN</h3>
-              <h4>UI/UX Design</h4>
+              <h3>DEVELOP</h3>
+              <h4>Frontend Web Development</h4>
               <p>
-                Creating high-fidelity prototypes and user-centered interfaces
-                with a focus on usability, accessibility, and visual hierarchy
-                for intuitive user experiences.
+                Building modern, responsive web applications with clean UI
+                component design, reusable structures, and performance
+                optimization for smooth user interactions.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">Figma</div>
-                <div className="what-tags">Canva</div>
-                <div className="what-tags">UI Design</div>
-                <div className="what-tags">Wireframing</div>
-                <div className="what-tags">Prototyping</div>
-                <div className="what-tags">HCI Principles</div>
-                <div className="what-tags">User Research</div>
+                <div className="what-tags">JavaScript</div>
+                <div className="what-tags">HTML5 / CSS</div>
+                <div className="what-tags">React</div>
+                <div className="what-tags">Next.js</div>
+                <div className="what-tags">Flutter</div>
+                <div className="what-tags">Java</div>
+                <div className="what-tags">Git / GitHub</div>
+                <div className="what-tags">VS Code</div>
               </div>
               <div className="what-arrow"></div>
             </div>

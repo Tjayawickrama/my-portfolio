@@ -20,6 +20,7 @@
 .contact-flex {
   display: flex;
   justify-content: space-between;
+  padding-right: 60px;
 }
 .contact-flex h4 {
   font-family: "Outfit", sans-serif;
@@ -119,6 +120,7 @@ a.contact-social:hover {
   .contact-flex {
     flex-direction: column;
     gap: 40px;
+    padding-right: 0;
   }
   .contact-flex p {
     margin-bottom: 0px;
