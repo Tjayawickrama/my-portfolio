@@ -239,18 +239,19 @@
   }
 }
 
-/* Certifications Section */
+/* ── Certifications Section ────────────────────────────────── */
 .career-certs {
   margin-top: 80px;
   width: 100%;
+  box-sizing: border-box;
 }
 .career-certs-title {
   font-family: "Outfit", sans-serif;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   background: linear-gradient(135deg, #ffffff 40%, var(--accentColor) 100%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -259,30 +260,31 @@
 }
 .career-certs-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: 1fr;  /* mobile default: 1 column */
+  gap: 14px;
 }
 .career-cert-item {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 20px 24px;
+  padding: 18px 20px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.015);
   border: 1px solid rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(10px);
   transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-sizing: border-box;
+  width: 100%;
 }
 .career-cert-item:hover {
   background: rgba(255, 255, 255, 0.045);
   border-color: rgba(181, 136, 255, 0.3);
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: 0 12px 30px rgba(181, 136, 255, 0.12);
 }
 .career-cert-icon {
-  font-size: 24px;
-  width: 44px;
-  height: 44px;
+  font-size: 22px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -294,34 +296,66 @@
 }
 .career-cert-info h4 {
   font-family: "Outfit", sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  margin: 0 0 4px;
+  margin: 0 0 3px;
   color: #fff;
 }
 .career-cert-info p {
   font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
   margin: 0;
   color: var(--secondaryTextColor);
   width: auto;
+  line-height: 1.4;
 }
-@media only screen and (max-width: 900px) {
+
+/* Certifications — mobile: 1 col, tablet: 2 col, desktop: 3 col */
+
+@media only screen and (max-width: 599px) {
+  .career-certs {
+    margin-top: 48px;
+  }
   .career-certs-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .career-certs-title {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+  /* Remove heavy effects on small phones */
+  .career-cert-item {
+    backdrop-filter: none;
+    padding: 16px 18px;
+    gap: 12px;
+  }
+  .career-cert-item:hover {
+    transform: none;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 899px) {
+  .career-certs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
   .career-certs-title {
     font-size: 26px;
   }
 }
-@media only screen and (min-width: 600px) and (max-width: 900px) {
+
+@media only screen and (min-width: 900px) and (max-width: 1399px) {
   .career-certs-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
-@media only screen and (max-width: 1400px) {
+
+@media only screen and (min-width: 1400px) {
   .career-certs-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
 }
