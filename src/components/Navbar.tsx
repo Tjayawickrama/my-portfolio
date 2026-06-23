@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
@@ -9,6 +9,8 @@ gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 export let smoother: ScrollSmoother;
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
@@ -39,9 +41,14 @@ const Navbar = () => {
       ScrollSmoother.refresh(true);
     });
   }, []);
+
+  const handleNavLinkClick = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <>
-      <div className="header">
+      <div className={`header${menuOpen ? " menu-open" : ""}`}>
         <a href="/#" className="navbar-title" data-cursor="disable">
           Tharushi.
         </a>
@@ -52,24 +59,45 @@ const Navbar = () => {
         >
           tharushijayawickrama1234@gmail.com
         </a>
+
+        {/* Hamburger button - mobile/tablet only */}
+        <button
+          className={`hamburger${menuOpen ? " is-open" : ""}`}
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label="Toggle menu"
+          data-cursor="disable"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
         <ul>
           <li>
-            <a data-href="#about" href="#about">
+            <a data-href="#about" href="#about" onClick={handleNavLinkClick}>
               <HoverLinks text="ABOUT" />
             </a>
           </li>
           <li>
-            <a data-href="#work" href="#work">
+            <a data-href="#work" href="#work" onClick={handleNavLinkClick}>
               <HoverLinks text="WORK" />
             </a>
           </li>
           <li>
-            <a data-href="#contact" href="#contact">
+            <a data-href="#contact" href="#contact" onClick={handleNavLinkClick}>
               <HoverLinks text="CONTACT" />
             </a>
           </li>
         </ul>
       </div>
+
+      {/* Mobile overlay backdrop */}
+      {menuOpen && (
+        <div
+          className="mobile-menu-overlay"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
 
       <div className="nav-fade"></div>
     </>

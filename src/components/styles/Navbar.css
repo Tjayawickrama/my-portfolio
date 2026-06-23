@@ -3,7 +3,8 @@
   max-width: var(--cMaxWidth);
   width: var(--cWidth);
   justify-content: space-between;
-  padding: 20px 0px;
+  align-items: center;
+  padding: 18px 0px;
   margin-bottom: -100px;
   box-sizing: border-box;
   position: fixed;
@@ -54,31 +55,168 @@
   text-transform: uppercase;
   color: #ffffff;
   transition: color 0.3s ease;
+  z-index: 10001;
+  position: relative;
 }
 .navbar-title:hover {
   color: var(--accentColor);
 }
+
+/* ═══════════════════════════════════════
+   HAMBURGER BUTTON
+═══════════════════════════════════════ */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 10001;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.hamburger span:nth-child(1) { width: 24px; }
+.hamburger span:nth-child(2) { width: 18px; }
+.hamburger span:nth-child(3) { width: 24px; }
+
+.hamburger.is-open span:nth-child(1) {
+  width: 24px;
+  transform: translateY(7px) rotate(45deg);
+  background-color: var(--accentColor);
+}
+.hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(6px);
+}
+.hamburger.is-open span:nth-child(3) {
+  width: 24px;
+  transform: translateY(-7px) rotate(-45deg);
+  background-color: var(--accentColor);
+}
+
+/* ═══════════════════════════════════════
+   MOBILE MENU — slide-in drawer
+═══════════════════════════════════════ */
+.header ul {
+  /* Desktop defaults kept */
+  flex-direction: column;
+  row-gap: 8px;
+  align-items: end;
+}
+
+/* On mobile/tablet: drawer mode */
+@media only screen and (max-width: 1024px) {
+  .header ul {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 240px;
+    height: 100dvh;
+    background: rgba(7, 5, 9, 0.97);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(181, 136, 255, 0.12);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0;
+    padding: 80px 32px 40px;
+    box-sizing: border-box;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 10000;
+  }
+
+  .header.menu-open ul {
+    transform: translateX(0);
+  }
+
+  .header ul li {
+    width: 100%;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+
+  .header ul li:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Mobile overlay backdrop */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 9998;
+  backdrop-filter: blur(2px);
+  animation: overlayFadeIn 0.3s ease forwards;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+═══════════════════════════════════════ */
 @media only screen and (min-width: 500px) {
   .header {
     padding: 20px 0px;
   }
-  .header ul {
-    flex-direction: row;
-    align-items: center;
-    font-size: 14px;
-  }
-  .header ul li {
-    color: var(--secondaryTextColor);
-  }
-  .navbar-title {
-    font-size: 18px;
-  }
 }
+
 @media only screen and (min-width: 900px) {
   .navbar-connect {
     display: block;
   }
 }
+
+@media only screen and (min-width: 1025px) {
+  /* Desktop: hamburger hidden, ul is normal flex row */
+  .hamburger {
+    display: none;
+  }
+
+  .header ul {
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    backdrop-filter: none;
+    border: none;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+    transform: none !important;
+    transition: none;
+    gap: 0;
+    column-gap: 40px;
+    font-size: 14px;
+  }
+
+  .header ul li {
+    padding: 0;
+    border: none;
+    width: auto;
+  }
+}
+
 @media only screen and (min-width: 1200px) {
   .header {
     padding: 35px 0px;

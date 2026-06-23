@@ -137,8 +137,12 @@
 .landing-intro {
   position: absolute;
   z-index: 9;
-  top: 12%;
+  top: 18%;
   left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 .landing-intro h3 {
   font-size: 14px;
@@ -168,11 +172,15 @@
 
 .landing-info {
   position: absolute;
-  right: 50%;
-  transform: translateX(50%);
-  bottom: 40px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  transform: none;
+  bottom: 32px;
   top: inherit;
   z-index: 9;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 .landing-info h3 {
   font-size: 14px;
@@ -214,6 +222,9 @@ h2.landing-info-h2 {
 .landing-h2-2 {
   position: absolute;
   top: 0;
+  /* Hidden on mobile - shown desktop only */
+  opacity: 0;
+  pointer-events: none;
 }
 .landing-info-h2::after {
   content: "";
@@ -228,6 +239,8 @@ h2.landing-info-h2 {
   );
   top: 0;
   left: 0;
+  /* Hide gradient mask on mobile - it hides landing-info-h2 content */
+  display: none;
 }
 @media screen and (min-width: 500px) {
   .landing-circle2 {
@@ -240,6 +253,9 @@ h2.landing-info-h2 {
   .landing-intro h3 {
     font-size: 15px;
   }
+  .landing-intro {
+    top: 16%;
+  }
 }
 @media screen and (min-width: 768px) {
   .character-model {
@@ -248,6 +264,14 @@ h2.landing-info-h2 {
   .landing-intro h3,
   .landing-info h3 {
     font-size: 16px;
+  }
+  .landing-intro {
+    top: 15%;
+    text-align: left;
+  }
+  .landing-info {
+    text-align: left;
+    bottom: 48px;
   }
 }
 @media screen and (min-width: 1025px) {
@@ -264,8 +288,11 @@ h2.landing-info-h2 {
   .landing-intro {
     top: 50%;
     left: auto;
+    right: 0;
     right: 66%;
+    text-align: left;
     transform: translate(0%, -50%);
+    padding: 0;
   }
 
   .landing-info {
@@ -276,6 +303,16 @@ h2.landing-info-h2 {
     transform: translate(0%, -50%);
     right: auto;
     left: 66%;
+    padding: 0;
+  }
+
+  /* Restore animated text switcher on desktop */
+  .landing-h2-2 {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .landing-info-h2::after {
+    display: block;
   }
 }
 @media screen and (min-width: 1200px) {

@@ -1,7 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   ABOUT SECTION
-   Mobile: stacked (image top, text below)
-   Desktop (≥1025px): two-column grid — image left, text right
+   ABOUT SECTION  — no image, two-column elegant layout
 ═══════════════════════════════════════════════════════════════ */
 
 .about-section {
@@ -10,159 +8,258 @@
   margin: 0 auto;
   padding: 80px 16px;
   box-sizing: border-box;
-
-  /* Mobile default: single column, centered */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-}
-
-/* ── Image column ───────────────────────────────────────────── */
-.about-image-wrapper {
-  position: relative;
-  /* Fixed size on mobile so it's large but not full-width */
-  width: min(280px, 72vw);
-  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: auto;
+  overflow-x: hidden;
 }
 
-/* Subtle purple glow behind the photo */
-.about-glow-light {
-  position: absolute;
-  inset: -30px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(180, 80, 255, 0.22) 0%,
-    rgba(130, 40, 220, 0.12) 45%,
-    transparent 72%
-  );
-  border-radius: 50%;
-  filter: blur(40px);
-  z-index: 0;
-  animation: aboutGlowPulse 4s ease-in-out infinite;
-  pointer-events: none;
+.about-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-@keyframes aboutGlowPulse {
-  0%, 100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
-
-.about-image {
+/* ── LEFT COLUMN ──────────────────────────────────────────────── */
+.about-left {
   position: relative;
-  z-index: 2;
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-  /* Very soft drop shadow for depth */
-  filter: drop-shadow(0 8px 32px rgba(160, 60, 255, 0.25));
 }
 
-/* ── Text column ────────────────────────────────────────────── */
-.about-me {
-  width: 100%;
-  max-width: 560px;
-  text-align: center;         /* centered on mobile */
-}
-
-.about-me .title {
+/* Eyebrow label */
+.about-eyebrow {
+  display: inline-block;
   font-family: "Outfit", sans-serif;
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 5px;
-  font-weight: 600;
   color: var(--accentColor);
-  margin: 0 0 16px 0;
+  margin-bottom: 18px;
 }
 
-.about-me .para {
+/* Main heading */
+.about-heading {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--primaryTextColor, #fff);
+  margin: 0 0 28px 0;
+}
+
+.about-heading-accent {
+  background: linear-gradient(135deg, var(--accentColor, #a855f7), #e879f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Decorative animated elements ─── */
+.about-deco {
+  position: relative;
+  height: 6px;
+  width: 220px;
+  margin-bottom: 48px;
+}
+
+.deco-line {
+  position: absolute;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accentColor, #a855f7), transparent);
+}
+
+.deco-line-1 {
+  width: 100%;
+  top: 0;
+  animation: lineSlide 3s ease-in-out infinite alternate;
+}
+
+.deco-line-2 {
+  width: 55%;
+  top: 4px;
+  opacity: 0.5;
+  animation: lineSlide 3s ease-in-out 0.5s infinite alternate;
+}
+
+@keyframes lineSlide {
+  from { transform: scaleX(0.6); transform-origin: left; }
+  to   { transform: scaleX(1);   transform-origin: left; }
+}
+
+.deco-orb {
+  position: absolute;
+  right: -60px;
+  top: -80px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(168, 85, 247, 0.18) 0%,
+    transparent 70%
+  );
+  filter: blur(30px);
+  animation: orbPulse 5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes orbPulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.08); }
+}
+
+/* ── Stats ──────────────────────────────────────────────────── */
+.about-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  cursor: default;
+  min-width: 90px;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(168, 85, 247, 0.55);
+  background: rgba(168, 85, 247, 0.08);
+}
+
+.stat-value {
+  font-family: "Outfit", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accentColor, #a855f7), #e879f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
   font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 16px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--secondaryTextColor, #aaa);
+  text-align: center;
+}
+
+/* ── RIGHT COLUMN ─────────────────────────────────────────────── */
+.about-right {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.about-para {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
   font-weight: 400;
-  line-height: 1.9;
+  line-height: 1.95;
   letter-spacing: 0.2px;
-  color: var(--secondaryTextColor);
+  color: var(--secondaryTextColor, #aaa);
   margin: 0;
+  padding: 20px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid var(--accentColor, #a855f7);
+  border-radius: 0 12px 12px 0;
+  box-sizing: border-box;
+  word-break: break-word;
 }
 
-/* ── Tablet (≥600px): bump image size slightly ──────────────── */
-@media only screen and (min-width: 600px) {
-  .about-image-wrapper {
-    width: min(320px, 60vw);
-  }
-  .about-me .para {
-    font-size: 17px;
-  }
+/* ── Highlights list ──────────────────────────────────────────── */
+.about-highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-/* ── Desktop (≥1025px): two-column grid ────────────────────── */
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  cursor: default;
+}
+
+.highlight-item:hover {
+  background: rgba(168, 85, 247, 0.07);
+  border-color: rgba(168, 85, 247, 0.3);
+  transform: translateX(6px);
+}
+
+.highlight-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+
+.highlight-text {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.93rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--secondaryTextColor, #aaa);
+}
+
+/* ── Desktop (≥1025px): two-column side-by-side ────────────── */
 @media only screen and (min-width: 1025px) {
   .about-section {
-    /* True two-column: left column = image, right = text */
+    padding: 0 40px;
+  }
+
+  .about-inner {
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 0;
-    column-gap: 72px;
-    padding: 0 40px;
-    min-height: var(--vh);
-    max-width: 1200px;
+    gap: 80px;
   }
 
-  .about-image-wrapper {
-    /* Left column: fixed width, image-sized */
-    width: 360px;
-    flex-shrink: 0;
-  }
-
-  .about-me {
-    /* Right column: fill remaining space */
+  .about-left {
     flex: 1;
-    max-width: 520px;
-    text-align: left;          /* left-align text on desktop */
+    max-width: 480px;
   }
 
-  .about-me .title {
-    font-size: 14px;
-    margin-bottom: 24px;
-  }
-
-  .about-me .para {
-    font-size: clamp(1rem, 1.3vw, 1.2rem);
-    line-height: 1.9;
-  }
-
-  .about-glow-light {
-    inset: -50px;
-    filter: blur(55px);
+  .about-right {
+    flex: 1;
+    max-width: 560px;
   }
 }
 
-/* ── Large desktop (≥1400px) ───────────────────────────────── */
+/* ── Large desktop (≥1400px) ─────────────────────────────────── */
 @media only screen and (min-width: 1400px) {
-  .about-section {
-    column-gap: 96px;
+  .about-inner {
+    gap: 100px;
   }
 
-  .about-image-wrapper {
-    width: 400px;
-  }
-
-  .about-me {
-    max-width: 580px;
-  }
-
-  .about-me .para {
-    font-size: clamp(1.1rem, 1.35vw, 1.35rem);
+  .about-heading {
+    font-size: 4.2rem;
   }
 }

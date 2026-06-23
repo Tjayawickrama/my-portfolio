@@ -26,19 +26,20 @@
   align-content: stretch;
   padding: 0 16px;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 /* Mobile: stacked vertical layout */
 .work-flex {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 20px;
   padding: 0;
   margin: 0;
   position: relative;
 }
 .work-box {
-  padding: 24px 16px;
+  padding: 20px 14px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -46,7 +47,7 @@
   border: 1px solid rgba(181, 136, 255, 0.1);
   border-radius: 16px;
   flex-shrink: 0;
-  gap: 24px;
+  gap: 20px;
   justify-content: start;
   background: rgba(255,255,255,0.015);
   backdrop-filter: blur(10px);
@@ -187,15 +188,35 @@
 .work-image-in:hover img {
   transform: scale(1.04);
 }
-/* Tablet: 2-column grid */
-@media only screen and (min-width: 600px) {
+/* Tablet: 2-column grid (768px+ only, not small phones) */
+@media only screen and (min-width: 768px) {
   .work-flex {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: 20px;
   }
   .work-box {
-    padding: 28px 24px;
+    padding: 24px 20px;
+  }
+}
+
+/* Small phones: ensure single column */
+@media only screen and (max-width: 767px) {
+  .work-flex {
+    grid-template-columns: 1fr;
+  }
+  .work-box {
+    padding: 20px 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .work-title h3 {
+    font-size: 36px;
+    line-height: 36px;
+    white-space: nowrap;
+  }
+  .work-info h4 {
+    font-size: 17px;
   }
 }
 
@@ -207,18 +228,19 @@
   .work-container {
     padding: 0;
     height: 100%;
+    overflow-x: hidden;
   }
   .work-flex {
     display: flex;
     flex-direction: row;
     height: 100%;
-    margin-left: -80px;
-    padding-right: 120px;
+    margin-left: clamp(-40px, -4vw, 0px);
+    padding-right: clamp(40px, 8vw, 120px);
     gap: 0;
   }
   .work-box {
-    padding: 60px 80px;
-    width: 600px;
+    padding: clamp(30px, 5vw, 80px) clamp(30px, 6vw, 80px);
+    width: clamp(320px, 45vw, 600px);
     border: none;
     border-left: 1px dashed rgba(181, 136, 255, 0.1);
     border-radius: 0;
