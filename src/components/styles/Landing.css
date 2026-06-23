@@ -212,7 +212,8 @@
 h2.landing-info-h2 {
   color: #ffffff;
   font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-  width: 120%;
+  width: 100%;
+  max-width: 100%;
   margin: 0;
   font-family: "Outfit", sans-serif;
   font-weight: 800;
@@ -484,6 +485,34 @@ h2.landing-info-h2 {
 
 .img-fade-out {
   animation: fadeOutImg 0.35s cubic-bezier(0.5, 0, 0.75, 0) forwards;
+}
+
+/* Small phone */
+@media screen and (max-width: 380px) {
+  .profile-image-wrapper {
+    width: min(92vw, 320px);
+    top: 48%;
+  }
+  .landing-intro {
+    top: 12%;
+  }
+  .landing-info {
+    bottom: 20px;
+  }
+}
+
+/* Landscape mobile — reduce image size so text doesn't collide */
+@media screen and (max-height: 500px) and (max-width: 900px) {
+  .profile-image-wrapper {
+    width: min(50vw, 280px);
+    top: 50%;
+  }
+  .landing-intro {
+    top: 8%;
+  }
+  .landing-info {
+    bottom: 10px;
+  }
 }
 
 /* Tablet */

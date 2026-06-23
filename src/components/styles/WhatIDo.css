@@ -8,11 +8,11 @@
   height: auto;
   width: 100%;
   max-width: 100%;
-  margin: 60px auto;
+  margin: 40px auto;
   padding: 0 16px;
   box-sizing: border-box;
   z-index: 9;
-  overflow-x: hidden;
+  overflow: visible;
 }
 .what-box {
   width: 100%;
@@ -290,7 +290,7 @@
   }
   .what-box-in {
     height: auto;
-    min-height: 380px;
+    min-height: auto;
     margin-left: 0;
     gap: 12px;
   }

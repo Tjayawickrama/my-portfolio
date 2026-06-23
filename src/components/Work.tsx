@@ -70,9 +70,11 @@ const Work = () => {
     if (window.innerWidth <= 1024) return;
 
     let translateX: number = 0;
+    let timeline: gsap.core.Timeline | null = null;
 
     function setTranslateX() {
       const box = document.getElementsByClassName("work-box");
+      if (!box.length) return;
       const rectLeft = document
         .querySelector(".work-container")!
         .getBoundingClientRect().left;
@@ -83,26 +85,51 @@ const Work = () => {
       translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
     }
 
-    setTranslateX();
+    function buildTimeline() {
+      // Kill previous timeline + ScrollTrigger before rebuilding
+      if (timeline) {
+        timeline.kill();
+        ScrollTrigger.getById("work")?.kill();
+      }
 
-    let timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".work-section",
-        start: "top top",
-        end: `+=${translateX}`,
-        scrub: true,
-        pin: true,
-        id: "work",
-      },
-    });
+      if (window.innerWidth <= 1024) return;
 
-    timeline.to(".work-flex", {
-      x: -translateX,
-      ease: "none",
-    });
+      setTranslateX();
+
+      timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".work-section",
+          start: "top top",
+          end: `+=${translateX}`,
+          scrub: true,
+          pin: true,
+          id: "work",
+        },
+      });
+
+      timeline.to(".work-flex", {
+        x: -translateX,
+        ease: "none",
+      });
+    }
+
+    buildTimeline();
+
+    // Recalculate on resize / orientation change
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        ScrollTrigger.refresh();
+        buildTimeline();
+      }, 200);
+    };
+    window.addEventListener("resize", onResize, { passive: true });
 
     return () => {
-      timeline.kill();
+      clearTimeout(resizeTimer);
+      window.removeEventListener("resize", onResize);
+      if (timeline) timeline.kill();
       ScrollTrigger.getById("work")?.kill();
     };
   }, []);

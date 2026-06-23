@@ -2,7 +2,10 @@
   margin: auto;
   padding-bottom: 0;
   padding-top: 80px;
+  padding-left: 16px;
+  padding-right: 16px;
   margin-top: 0;
+  box-sizing: border-box;
 }
 .contact-section h3 {
   font-family: "Outfit", sans-serif;
@@ -156,6 +159,8 @@ a.contact-social:hover {
 @media only screen and (max-width: 600px) {
   .contact-section {
     padding-top: 60px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
   .contact-section h3 {
     font-size: clamp(2rem, 10vw, 3.2rem);
@@ -165,5 +170,8 @@ a.contact-social:hover {
   }
   .contact-box h2 {
     font-size: 16px;
+  }
+  .contact-flex {
+    gap: 20px;
   }
 }

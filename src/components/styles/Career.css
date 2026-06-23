@@ -176,7 +176,7 @@
 }
 @media only screen and (max-width: 1025px) {
   .career-section {
-    padding: 80px 16px;
+    padding: 80px 20px;
     margin-top: 0;
     margin-bottom: 0;
     box-sizing: border-box;
@@ -213,14 +213,15 @@
     margin-top: 0px;
   }
   .career-info-in {
-    gap: 8px;
-    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
   }
   .career-info h3 {
-    font-size: 24px;
+    font-size: 22px;
+    min-width: 70px;
   }
   .career-info h4 {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.3;
     width: auto;
     max-width: 100%;

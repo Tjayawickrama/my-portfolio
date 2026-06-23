@@ -198,6 +198,9 @@
   .work-box {
     padding: 24px 20px;
   }
+  .work-container {
+    padding: 0 20px;
+  }
 }
 
 /* Small phones: ensure single column */
