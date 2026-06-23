@@ -62,22 +62,36 @@ const SocialIcons = () => {
     });
   }, []);
 
-  // Hide icons when contact section is visible
+  // Hide icons when contact or work/projects section is visible
   useEffect(() => {
-    const contactSection = document.getElementById("contact");
-    if (!contactSection || !iconsRef.current) return;
+    const sectionsToHide = [
+      document.getElementById("contact"),
+      document.getElementById("work"),
+    ].filter(Boolean) as HTMLElement[];
+
+    if (!iconsRef.current || sectionsToHide.length === 0) return;
+
+    const visibleSections = new Set<Element>();
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            visibleSections.add(entry.target);
+          } else {
+            visibleSections.delete(entry.target);
+          }
+        });
         if (iconsRef.current) {
-          iconsRef.current.style.opacity = entry.isIntersecting ? "0" : "1";
-          iconsRef.current.style.pointerEvents = entry.isIntersecting ? "none" : "auto";
+          const shouldHide = visibleSections.size > 0;
+          iconsRef.current.style.opacity = shouldHide ? "0" : "1";
+          iconsRef.current.style.pointerEvents = shouldHide ? "none" : "auto";
         }
       },
       { threshold: 0.05 }
     );
 
-    observer.observe(contactSection);
+    sectionsToHide.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
