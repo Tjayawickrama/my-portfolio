@@ -12,18 +12,21 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    smoother = ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: 1.7,
-      speed: 1.7,
-      effects: true,
-      autoResize: true,
-      ignoreMobileResize: true,
-    });
+    // Only apply ScrollSmoother on desktop — mobile uses native scroll
+    if (window.innerWidth > 1024) {
+      smoother = ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+        smooth: 1.4,
+        speed: 1.4,
+        effects: true,
+        autoResize: true,
+        ignoreMobileResize: true,
+      });
 
-    smoother.scrollTop(0);
-    smoother.paused(true);
+      smoother.scrollTop(0);
+      smoother.paused(true);
+    }
 
     let links = document.querySelectorAll(".header ul a");
     links.forEach((elem) => {

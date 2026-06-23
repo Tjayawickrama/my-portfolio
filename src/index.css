@@ -38,11 +38,24 @@ h6 {
 body {
   overflow-x: hidden;
   overflow-y: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: thin;           /* Firefox — thin scrollbar */
+  scrollbar-color: rgba(181, 136, 255, 0.5) transparent; /* Firefox */
 }
+
+/* Custom scrollbar — Chrome, Safari, Edge */
 body::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  width: 5px;
+}
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  background: rgba(181, 136, 255, 0.45);
+  border-radius: 999px;
+  transition: background 0.3s ease;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(181, 136, 255, 0.8);
 }
 a {
   color: inherit;
