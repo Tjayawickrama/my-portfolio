@@ -201,6 +201,7 @@
   position: relative;
   display: flex;
   flex-wrap: nowrap;
+  justify-content: center; /* centre on mobile */
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #ffffff;
@@ -218,7 +219,7 @@ h2.landing-info-h2 {
   font-family: "Outfit", sans-serif;
   font-weight: 800;
   position: relative;
-  margin-left: -5px;
+  /* margin-left removed — was pushing text off-center on mobile */
 }
 .landing-h2-2 {
   position: absolute;
@@ -305,6 +306,11 @@ h2.landing-info-h2 {
     right: auto;
     left: 66%;
     padding: 0;
+  }
+
+  /* On desktop, left-align the flex row (overrides mobile centre) */
+  .landing-info h2 {
+    justify-content: flex-start;
   }
 
   /* Restore animated text switcher on desktop */

@@ -6,7 +6,7 @@
   width: var(--cWidth);
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 16px 60px;
+  padding: 40px 16px 40px;
   box-sizing: border-box;
   display: flex;
   align-items: flex-start;
@@ -18,7 +18,7 @@
 .about-inner {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 20px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -48,7 +48,7 @@
   font-weight: 700;
   line-height: 1.15;
   color: var(--primaryTextColor, #fff);
-  margin: 0 0 20px 0;
+  margin: 0 0 12px 0;
 }
 
 .about-heading-accent {
@@ -63,7 +63,7 @@
   position: relative;
   height: 6px;
   width: 200px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .deco-line {
@@ -264,13 +264,13 @@
     gap: 36px;
   }
 
+  .about-heading {
+    margin: 0 0 40px 0;
+  }
+
   .about-deco {
     margin-bottom: 48px;
     width: 220px;
-  }
-
-  .about-heading {
-    margin: 0 0 40px 0;
   }
 
   .stat-card {

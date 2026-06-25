@@ -8,7 +8,7 @@
   height: auto;
   width: 100%;
   max-width: 100%;
-  margin: 40px auto;
+  margin: 40px auto 60px;
   padding: 0 16px;
   box-sizing: border-box;
   z-index: 9;
@@ -361,7 +361,8 @@
     padding: 10px clamp(20px, 3vw, 40px);
   }
 }
-@media only screen and (max-width: 1400px) {
+/* Large screens: cap card height and font sizes */
+@media only screen and (min-width: 1025px) and (max-width: 1400px) {
   .what-box-in {
     height: 400px;
   }
